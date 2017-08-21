@@ -18,8 +18,28 @@ int fibonacci_sum_naive(long long n) {
     return sum % 10;
 }
 
+int fibonacci_sum_fast(long long n){
+    if (n <= 1)
+    return n;
+
+    long long previous = 0;
+    long long current  = 1;
+    long long sum = 0;
+    long long tmp_previous;
+
+    for (long long i = 0; i < n; ++i) {
+        tmp_previous = previous;
+        previous = current;
+        sum = (sum + current) % 10;
+        current = (tmp_previous + current) % 10;
+    }
+
+    return sum;
+}
+
 int main() {
     long long n = 0;
     std::cin >> n;
-    std::cout << fibonacci_sum_naive(n);
+    // for(n=0; n<10; n++)
+    std::cout << fibonacci_sum_fast(n) << "\n";
 }
