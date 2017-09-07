@@ -3,10 +3,29 @@
 #include <vector>
 
 using std::vector;
+using namespace std;
 
 int binary_search(const vector<int> &a, int x) {
+  // cout << "\n===== " << x << " =====\n"; 
   int left = 0, right = (int)a.size(); 
-  //write your code here
+  int mid;
+  while(left < right){
+    mid = (int)((left+right)/2);
+    // cout << "mid [" << mid << "] = " << a[mid] << "\n";
+    if(a[mid] < x){
+      left = mid+1;
+      // cout << "wiekszy\n";
+    }
+    else if(a[mid] > x){
+      right = mid;
+      // cout << "mniejszy\n";
+    }
+    else{
+      // cout << "dokladnie\n";
+      return mid;
+    }
+  }
+  return -1;
 }
 
 int linear_search(const vector<int> &a, int x) {
@@ -31,6 +50,6 @@ int main() {
   }
   for (int i = 0; i < m; ++i) {
     //replace with the call to binary_search when implemented
-    std::cout << linear_search(a, b[i]) << ' ';
+    std::cout << binary_search(a, b[i]) << ' ';
   }
 }
