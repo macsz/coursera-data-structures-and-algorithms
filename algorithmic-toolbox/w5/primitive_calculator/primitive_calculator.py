@@ -17,10 +17,7 @@ def optimal_sequence(n):
 
 
 def dp(n):
-#     private static List<Integer> dp_sequence(int n) {
-#         List<Integer> sequence = new ArrayList<Integer>();
     sequence = []
-#         int [] c = new int[n+1];
     c = [0] * (n + 1)
     a1 = 0
     a2 = 0
