@@ -32,10 +32,10 @@ vector<int> optimal_sequence(int n) {
 }
 
 vector<int> optimal(int n){
+
   vector<int> sequence;
   int c[n+1];
   int a1, a2, a3, m;
-  c[1] = 0;
   for(int i=2; i<n+1; i++){
     a1 = 9999999;
     a2 = 9999999;
@@ -51,8 +51,7 @@ vector<int> optimal(int n){
     m = min(a1, a2, a3);
     c[i] = m;
   }
-  int i=n;
-  while(i>1){
+  for(int i=n; i>1;){
     a1 = 9999999;
     a2 = 9999999;
     a3 = 9999999;
@@ -86,9 +85,15 @@ vector<int> optimal(int n){
 int main() {
   int n;
   std::cin >> n;
-  vector<int> sequence = optimal(n);
-  std::cout << sequence.size() - 1 << std::endl;
-  for (size_t i = 0; i < sequence.size(); ++i) {
-    std::cout << sequence[i] << " ";
+  if(n==1){
+    std::cout << "0 ";
   }
+  else{
+    vector<int> sequence = optimal(n);
+    std::cout << sequence.size() << std::endl;
+    for (size_t i = 0; i <= sequence.size(); ++i) {
+      std::cout << sequence[i] << " ";
+    }
+  }
+  return 0;
 }
